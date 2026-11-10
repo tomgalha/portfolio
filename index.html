@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tomas Galharretborde — Developer</title>
+<meta name="description" content="Computer Engineering student at UNLP. Co-built an accessible bus-route web app and published a JavaScript date library on npm.">
+<style>
+  :root {
+    --bg: #faf8f4; --surface: #ffffff; --ink: #1c1b19; --muted: #615d56;
+    --line: #e4dfd6; --accent: #b4491f; --accent-ink: #ffffff; --chip: #f0ebe2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151412; --surface: #1e1c19; --ink: #f1ede6; --muted: #a8a299;
+      --line: #33302b; --accent: #f08a5d; --accent-ink: #1a120d; --chip: #2a2723;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .skip { position: absolute; left: -999px; }
+  .skip:focus { left: 16px; top: 16px; background: var(--surface); padding: 8px 12px; z-index: 10; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+  .brand { font-weight: 650; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+  nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  nav a:hover { color: var(--ink); }
+
+  .hero { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; padding-block: 72px 56px; }
+  .hero h1 { font: 600 clamp(2.2rem, 6vw, 3.4rem)/1.08 Georgia, "Noto Serif", serif; letter-spacing: -0.02em; margin: 0 0 18px; }
+  .hero p { margin: 0 0 12px; max-width: 34em; color: var(--muted); font-size: 1.08rem; }
+  .hero p strong { color: var(--ink); font-weight: 600; }
+  .hero img { width: 190px; height: 190px; border-radius: 28px; object-fit: cover; display: block; border: 1px solid var(--line); }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 15px; border: 1px solid var(--line); color: var(--ink); background: var(--surface); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn:hover { filter: brightness(1.06); }
+
+  section { padding-block: 44px; border-top: 1px solid var(--line); }
+  h2 { font: 600 1.6rem/1.2 Georgia, "Noto Serif", serif; margin: 0 0 24px; letter-spacing: -0.01em; }
+  .cards { display: grid; gap: 20px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px; }
+  .card h3 { margin: 0 0 4px; font-size: 1.25rem; }
+  .card .meta { color: var(--muted); font-size: 15px; margin: 0 0 14px; }
+  .card ul { margin: 0 0 16px; padding-left: 20px; }
+  .card li { margin-bottom: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0 0 18px; }
+  .chips li { background: var(--chip); border-radius: 999px; padding: 3px 12px; font-size: 14px; margin: 0; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+  .cols h3 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 10px; font-weight: 650; }
+  .cols p { margin: 0; }
+  .edu p { margin: 0 0 14px; }
+  .edu .meta { color: var(--muted); font-size: 15px; display: block; }
+  footer { border-top: 1px solid var(--line); padding-block: 36px 56px; color: var(--muted); }
+  footer ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 22px; flex-wrap: wrap; }
+
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; padding-block: 44px 36px; gap: 28px; }
+    .hero img { width: 130px; height: 130px; border-radius: 22px; order: -1; }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Tomas Galharretborde</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap hero" id="top">
+    <div>
+      <h1>Tomas Galharretborde</h1>
+      <p><strong>Computer Engineering and Programmer Analyst student at UNLP</strong>, in La Plata, Argentina.</p>
+      <p>I co-built an accessible bus-route web app and published a JavaScript date library on npm. Looking for a remote internship or junior developer role. Available full-time on an asynchronous schedule.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="https://github.com/tomgalha">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/tom-galharretborde-422463352/">LinkedIn</a>
+      </div>
+    </div>
+    <img src="photo.jpg" alt="Portrait of Tomas Galharretborde" width="190" height="190">
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Dónde está mi micro</h3>
+          <p class="meta">Hackathon project for the Accessibility Department, Facultad de Informática, UNLP · June 2026 – August 2026 · team of four</p>
+          <ul>
+            <li>A web app that shows local bus routes, nearby stops and arrivals on an interactive map, as an accessible alternative to an existing site.</li>
+            <li>I built all of the interface and most of the functionality; 51 of the repository's 118 commits.</li>
+            <li>I designed the navigation and styles to work with screen readers and for users with low vision.</li>
+            <li>I wrote all of the local Node.js API that serves stops and arrivals from mock data.</li>
+            <li>I used Cursor to redesign the app visually and to implement certain components.</li>
+            <li>Status: working prototype, still in development.</li>
+          </ul>
+          <ul class="chips" aria-label="Stack">
+            <li>JavaScript</li><li>HTML</li><li>CSS</li><li>Vite</li><li>Leaflet</li><li>Node.js</li>
+          </ul>
+          <a class="btn" href="https://github.com/accesibilidad-info-unlp/hackaton-2026-proyecto-04">View the repository</a>
+        </article>
+
+        <article class="card">
+          <h3>formatted-time</h3>
+          <p class="meta">JavaScript library published on npm · version 2.0.23</p>
+          <ul>
+            <li>Utilities for reading, parsing, converting and adding to dates, with local and UTC formats.</li>
+            <li>I wrote all of it myself, without AI tools.</li>
+            <li>Documented public API, automated tests and ESLint.</li>
+          </ul>
+          <ul class="chips" aria-label="Stack">
+            <li>JavaScript</li><li>npm</li><li>ESLint</li>
+          </ul>
+          <a class="btn" href="https://github.com/tomgalha/formatted-time">View the repository</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <div class="cols">
+        <div>
+          <h3>Languages</h3>
+          <p>JavaScript, HTML, CSS</p>
+        </div>
+        <div>
+          <h3>Learned at university</h3>
+          <p>Java, SQL, Pascal</p>
+        </div>
+        <div>
+          <h3>Libraries and tools</h3>
+          <p>React (basics), Vite, Leaflet, Node.js (basics), npm, Git and GitHub, ESLint, Cursor, Claude</p>
+        </div>
+        <div>
+          <h3>Spoken languages</h3>
+          <p>Spanish: native<br>English: B2 (upper intermediate)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap edu">
+      <h2>Education</h2>
+      <p><strong>Computer Engineering</strong>
+        <span class="meta">Universidad Nacional de La Plata (UNLP), Argentina · 2023 – present · third year</span></p>
+      <p><strong>University Programmer Analyst</strong> (Analista Programador Universitario)
+        <span class="meta">Universidad Nacional de La Plata (UNLP), Argentina · 2023 – present · third year</span></p>
+      <p><strong>Full Stack Open</strong> (University of Helsinki online course) — in progress
+        <span class="meta">Completed the exercises for parts 0 to 2, covering web fundamentals and React; code on <a href="https://github.com/tomgalha">GitHub</a>.</span></p>
+      <h2 style="margin-top:40px">Interests</h2>
+      <p>Board games; I make dice for D&amp;D.<br>Music.</p>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2 style="color:var(--ink)">Contact</h2>
+    <ul>
+      <li><a href="mailto:tomgalha@gmail.com">tomgalha@gmail.com</a></li>
+      <li><a href="https://github.com/tomgalha">github.com/tomgalha</a></li>
+      <li><a href="https://www.linkedin.com/in/tom-galharretborde-422463352/">LinkedIn</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
